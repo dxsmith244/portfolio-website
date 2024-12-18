@@ -64,8 +64,8 @@ export default function Home() {
           Your browser does not support the video tag.
         </video>
         <div className="text-center z-10">
-          <h1 className="text-5xl font-bold mb-4">John Doe</h1>
-          <p className="text-2xl mb-8">Web Developer & Designer</p>
+          <h1 className="text-5xl font-bold mb-4">David Smith</h1>
+          <p className="text-2xl mb-8">Full Stack Software Engineer</p>
           <Button asChild>
             <a href="#contact">Get in Touch</a>
           </Button>
@@ -77,26 +77,33 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
           <div className="max-w-2xl mx-auto">
             <p className="text-lg mb-4">
-              Hello! I'm John Doe, a passionate web developer with 5 years of experience in creating 
-              beautiful and functional websites. I specialize in React, Next.js, and Tailwind CSS.
+              Hello! I'm David Smith, a passionate Full Stack Engineer with 3 years of experience in creating 
+              beautiful and functional applications. I specialize in React, Next.js on the Front End and Spring Boot on the Back End.
             </p>
             <p className="text-lg mb-4">
-              When I'm not coding, you can find me exploring new technologies, contributing to 
-              open-source projects, or enjoying outdoor activities like hiking and photography.
+            <h2 className="text-2xl font-bold mt-8 mb-4">Skills</h2>
+            <ul className="list-disc list-inside">
+              <li>React</li>
+              <li>Next.js</li>
+              <li>JavaScript / TypeScript</li>
+              <li>HTML / CSS</li>
+              <li>Node.js</li>
+              <li>Git</li>
+            </ul>
             </p>
             <div className="flex justify-center space-x-4 mt-8">
-              <Button variant="outline" size="icon">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <button className="bg-white border border-gray-300 rounded-md px-2 py-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <a href="https://github.com/dxsmith244" target="_blank" rel="noopener noreferrer">
                   <Github className="h-6 w-6" />
                   <span className="sr-only">GitHub</span>
-                </a>
-              </Button>
-              <Button variant="outline" size="icon">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  </a>
+              </button>
+              <button className="bg-white border border-gray-300 rounded-md px-2 py-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <a href="https://www.linkedin.com/in/david-smith" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-6 w-6" />
                   <span className="sr-only">LinkedIn</span>
                 </a>
-              </Button>
+              </button>
             </div>
           </div>
         </div>
@@ -107,9 +114,9 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-12 text-center">My Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "E-commerce Platform", description: "A full-stack e-commerce solution built with Next.js and Stripe" },
-              { title: "Task Management App", description: "A React-based task manager with drag-and-drop functionality" },
-              { title: "Portfolio Website", description: "A responsive portfolio website showcasing my work and skills" }
+              { title: "Weather App", description: "Full Stack Weather app using a third party API along with basic HTML, CSS and, JS", link:"https://dxsmith244-weatherapp.netlify.app" },
+              { title: "placeholder", description: "placeholder", link:""},
+              { title: "placeholder", description: "placeholder", link:""}
             ].map((project, index) => (
               <Card key={index} className="bg-gray-700">
                 <CardHeader>
@@ -119,8 +126,10 @@ export default function Home() {
                   <CardDescription>{project.description}</CardDescription>
                 </CardContent>
                 <CardFooter>
-                  <Button asChild>
-                    <a href="#">View Project</a>
+                  <Button >
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    View Project
+                  </a>
                   </Button>
                 </CardFooter>
               </Card>
@@ -152,18 +161,18 @@ export default function Home() {
           <div className="mt-12 text-center">
             <p className="text-lg mb-4">Or reach out directly:</p>
             <div className="flex justify-center space-x-4">
-              <Button variant="outline" size="icon">
-                <a href="mailto:john@example.com">
+            <button className="bg-white border border-gray-300 rounded-md px-2 py-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <a href="mailto:dxsmith244@gmail.com">
                   <Mail className="h-6 w-6" />
                   <span className="sr-only">Email</span>
                 </a>
-              </Button>
-              <Button variant="outline" size="icon">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              </button>
+              <button className="bg-white border border-gray-300 rounded-md px-2 py-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <a href="https://linkedin.com/in/david-smith" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-6 w-6" />
                   <span className="sr-only">LinkedIn</span>
                 </a>
-              </Button>
+              </button>
             </div>
           </div>
         </div>
@@ -171,7 +180,7 @@ export default function Home() {
 
       <footer className="bg-black py-6">
         <div className="container mx-auto px-6 text-center">
-          <p>&copy; {new Date().getFullYear()} John Doe. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()}  David Smith. All rights reserved.</p>
         </div>
       </footer>
     </div>
