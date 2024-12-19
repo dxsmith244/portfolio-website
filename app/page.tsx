@@ -115,7 +115,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { title: "Weather App", description: "Full Stack Weather app using a third party API along with basic HTML, CSS and, JS", link:"https://dxsmith244-weatherapp.netlify.app" },
-              { title: "placeholder", description: "placeholder", link:""},
+              { title: "AI Chatbot", description: "AI Chatbot using OpenAI made with Next.JS and ReactTS", link:"https://ai-chatbot-dxsmith244s-projects.vercel.app"},
               { title: "placeholder", description: "placeholder", link:""}
             ].map((project, index) => (
               <Card key={index} className="bg-gray-700">
