@@ -6,9 +6,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Github, Linkedin, Mail } from 'lucide-react'
+import { sendEmail } from './actions/send-email'
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home')
+  const [formStatus, setFormStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: '' })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +32,20 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleSubmit = async (formData: FormData) => {
+    const result = await sendEmail(formData)
+    setFormStatus(result)
+
+    if (result.success) {
+      // Reset form
+      const form = document.getElementById('contact-form') as HTMLFormElement
+      form.reset()
+    }
+
+    // Clear status after 5 seconds
+    setTimeout(() => setFormStatus({ type: null, message: '' }), 5000)
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -142,21 +158,26 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold mb-12 text-center">Get in Touch</h2>
           <div className="max-w-md mx-auto">
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+            <form id="contact-form" action={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                <Input id="name" placeholder="Your Name" />
+                <Input id="name" name="name" placeholder="Your Name" required />
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                <Input id="email" type="email" placeholder="your@email.com" />
+                <Input id="email" name="email" type="email" placeholder="your@email.com" required />
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-                <Textarea id="message" placeholder="Your message here..." />
+                <Textarea id="message" name="message" placeholder="Your message here..." required />
               </div>
               <Button type="submit" className="w-full">Send Message</Button>
             </form>
+            {formStatus.type && (
+              <div className={`mt-4 p-2 rounded ${formStatus.type === 'success' ? 'bg-green-500' : 'bg-red-500'}`}>
+                {formStatus.message}
+              </div>
+            )}
           </div>
           <div className="mt-12 text-center">
             <p className="text-lg mb-4">Or reach out directly:</p>
