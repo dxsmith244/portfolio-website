@@ -132,7 +132,7 @@ export default function Home() {
             {[
               { title: "Weather App", description: "Full Stack Weather app using a third party API along with basic HTML, CSS and, JS", link:"https://dxsmith244-weatherapp.netlify.app" },
               { title: "AI Chatbot", description: "AI Chatbot using OpenAI made with Next.JS and ReactTS", link:"https://ai-chatbot-dxsmith244s-projects.vercel.app"},
-              { title: "placeholder", description: "placeholder", link:""}
+              { title: "Youtube Clone", description: "Youtube Clone with realtime videos that are currently being displayed to new users on youtube site functionality is limited because of the api used doesn't allow hosted websites to play the videos, when installed locally and with the proper api key it will play videos fetch the comments and descriptions along with showing recommended videos for the currently watched video", link:"https://ddtv.vercel.app"}
             ].map((project, index) => (
               <Card key={index} className="bg-gray-700">
                 <CardHeader>
