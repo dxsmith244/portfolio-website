@@ -35,7 +35,10 @@ export default function Home() {
 
   const handleSubmit = async (formData: FormData) => {
     const result = await sendEmail(formData)
-    setFormStatus(result)
+    setFormStatus({
+      type: result.success ? 'success' : 'error',
+      message: result.message
+    })
 
     if (result.success) {
       // Reset form
@@ -93,8 +96,8 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
           <div className="max-w-2xl mx-auto">
             <p className="text-lg mb-4">
-              Hello! I'm David Smith, a passionate Full Stack Engineer with 3 years of experience in creating 
-              beautiful and functional applications. I specialize in React, Next.js on the Front End and Spring Boot on the Back End.
+            Hello! I&apos;m David Smith, a passionate Full Stack Engineer with 3 years of experience in creating 
+            beautiful and functional applications. I specialize in React, Next.js on the Front End and Spring Boot on the Back End.
             </p>
             <p className="text-lg mb-4">
             <h2 className="text-2xl font-bold mt-8 mb-4">Skills</h2>
