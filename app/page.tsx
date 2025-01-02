@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Github, Linkedin, Mail } from 'lucide-react'
@@ -96,8 +96,8 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
           <div className="max-w-2xl mx-auto">
             <p className="text-lg mb-4">
-            Hello! I&apos;m David Smith, a passionate Full Stack Engineer with 3 years of experience in creating 
-            beautiful and functional applications. I specialize in React, Next.js on the Front End and Spring Boot on the Back End.
+              Hello! I&apos;m David Smith, a passionate Full Stack Engineer with 3 years of experience in creating 
+              beautiful and functional applications. I specialize in React, Next.js on the Front End and Spring Boot on the Back End.
             </p>
             <p className="text-lg mb-4">
             <h2 className="text-2xl font-bold mt-8 mb-4">Skills</h2>
@@ -137,19 +137,27 @@ export default function Home() {
               { title: "AI Chatbot", description: "AI Chatbot using OpenAI made with Next.JS and ReactTS", link:"https://ai-chatbot-dxsmith244s-projects.vercel.app"},
               { title: "Youtube Clone", description: "Youtube Clone with realtime videos that are currently being displayed to new users on youtube site functionality is limited because of the api used doesn't allow hosted websites to play the videos, when installed locally and with the proper api key it will play videos fetch the comments and descriptions along with showing recommended videos for the currently watched video", link:"https://ddtv.vercel.app"}
             ].map((project, index) => (
-              <Card key={index} className="bg-gray-700">
+              <Card key={index} className="bg-gray-700 text-white">
                 <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
+                  <CardTitle className="text-white">{project.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription>{project.description}</CardDescription>
+                  <CardDescription className="text-white">{project.description}</CardDescription>
                 </CardContent>
-                <CardFooter>
-                  <Button >
-                  <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    View Project
-                  </a>
+                <CardFooter className="flex justify-between">
+                  <Button>
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      View Project
+                    </a>
                   </Button>
+                  {project.title === "Youtube Clone" && (
+                    <Button variant="secondary" className="bg-gray-600 text-white hover:bg-gray-700">
+                      <a href="https://github.com/dxsmith244/youtube-clone" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                        <Github className="mr-2 h-4 w-4" />
+                        View on GitHub
+                      </a>
+                    </Button>
+                  )}
                 </CardFooter>
               </Card>
             ))}
